@@ -1,0 +1,278 @@
+# EIF formula registry
+# This YAML-style registry is intended for coding agents.
+# It is not a substitute for derivation. The agent should still classify the target,
+# verify assumptions, and check whether the formula applies.
+
+mean:
+  observed_data: "O = Y"
+  target: "psi = E[Y]"
+  nuisances: {}
+  eif: "Y - psi"
+  estimator: "sample mean"
+  warnings:
+    - "None for ordinary iid full-data mean."
+
+mean_transformation:
+  observed_data: "O = Y"
+  target: "psi = E[g(Y)]"
+  nuisances: {}
+  eif: "g(Y) - psi"
+  estimator: "mean of g(Y)"
+  warnings:
+    - "g(Y) must be integrable."
+
+variance:
+  observed_data: "O = Y"
+  target: "psi = Var(Y)"
+  nuisances:
+    mu: "E[Y]"
+  eif: "(Y - mu)^2 - psi"
+  estimator: "sample mean of squared centered residuals"
+  warnings:
+    - "Requires finite fourth moment for usual Wald inference."
+
+cdf:
+  observed_data: "O = Y"
+  target: "F(t) = P(Y <= t)"
+  nuisances: {}
+  eif: "I(Y <= t) - F(t)"
+  estimator: "empirical CDF"
+  warnings:
+    - "For fixed t."
+
+quantile:
+  observed_data: "O = Y"
+  target: "q_tau = F^{-1}(tau)"
+  nuisances:
+    f_q: "density f(q_tau)"
+  eif: "(tau - I(Y <= q_tau)) / f(q_tau)"
+  estimator: "sample quantile, with density estimate for SE"
+  warnings:
+    - "Requires continuous distribution and f(q_tau) > 0."
+    - "May be nonregular for discrete outcomes."
+
+ratio_of_means:
+  observed_data: "O = (Y, Z)"
+  target: "psi = E[Y] / E[Z]"
+  nuisances:
+    beta: "E[Z]"
+  eif: "(Y - psi * Z) / beta"
+  estimator: "mean(Y) / mean(Z)"
+  warnings:
+    - "Requires E[Z] bounded away from 0."
+
+missing_mean_mar:
+  observed_data: "O = (R, RY, X)"
+  target: "psi = E[Y]"
+  assumptions:
+    - "Y independent of R conditional on X"
+    - "pi(X) = P(R=1|X) > 0"
+  nuisances:
+    m: "E[Y|X]"
+    pi: "P(R=1|X)"
+  eif: "R/pi(X) * (Y - m(X)) + m(X) - psi"
+  estimator: "AIPW missing-data estimator"
+  warnings:
+    - "Y is observed only when R=1."
+    - "Use cross-fitting for flexible nuisance estimators."
+    - "Check positivity of pi(X)."
+
+missing_cdf_mar:
+  observed_data: "O = (R, RY, X)"
+  target: "F(t) = P(Y <= t)"
+  assumptions:
+    - "Y independent of R conditional on X"
+    - "pi(X) = P(R=1|X) > 0"
+  nuisances:
+    m_t: "P(Y <= t | X)"
+    pi: "P(R=1|X)"
+  eif: "R/pi(X) * (I(Y <= t) - m_t(X)) + m_t(X) - F(t)"
+  estimator: "AIPW CDF estimator"
+  warnings:
+    - "For fixed t."
+
+mean_potential_outcome:
+  observed_data: "O = (Y, A, X)"
+  target: "mu_a = E[Y(a)]"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity"
+  nuisances:
+    m_a: "E[Y|A=a,X]"
+    g_a: "P(A=a|X)"
+  eif: "I(A=a)/g_a(X) * (Y - m_a(X)) + m_a(X) - mu_a"
+  estimator: "AIPW estimator for mean potential outcome"
+  warnings:
+    - "Check positivity."
+    - "For binary treatment, g_1=e(X), g_0=1-e(X)."
+
+ate:
+  observed_data: "O = (Y, A, X)"
+  target: "psi = E[Y(1)-Y(0)]"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity"
+  nuisances:
+    m1: "E[Y|A=1,X]"
+    m0: "E[Y|A=0,X]"
+    e: "P(A=1|X)"
+  eif: "A/e(X)*(Y-m1(X)) - (1-A)/(1-e(X))*(Y-m0(X)) + m1(X)-m0(X)-psi"
+  estimator: "AIPW / one-step estimator"
+  warnings:
+    - "Check propensity score positivity."
+    - "Use cross-fitting for flexible nuisance estimation."
+
+att:
+  observed_data: "O = (Y, A, X)"
+  target: "psi = E[Y(1)-Y(0) | A=1]"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity for controls among treated covariate support"
+  nuisances:
+    m0: "E[Y|A=0,X]"
+    e: "P(A=1|X)"
+    p: "P(A=1)"
+  eif: "A/p*(Y-m0(X)-psi) - (1-A)/p*e(X)/(1-e(X))*(Y-m0(X))"
+  estimator: "AIPW ATT estimator"
+  warnings:
+    - "Not the same as the ATE EIF."
+    - "Check overlap for controls where treated units exist."
+
+subgroup_ate:
+  observed_data: "O = (Y, A, X)"
+  target: "psi_G = E[Y(1)-Y(0) | G=1], G=I(X in G_set)"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity"
+    - "P(G=1)>0"
+  nuisances:
+    m1: "E[Y|A=1,X]"
+    m0: "E[Y|A=0,X]"
+    e: "P(A=1|X)"
+    p_G: "P(G=1)"
+  eif: "G/p_G * [A/e(X)*(Y-m1(X)) - (1-A)/(1-e(X))*(Y-m0(X)) + m1(X)-m0(X)-psi_G]"
+  estimator: "subgroup AIPW estimator"
+  warnings:
+    - "For fixed subgroup only."
+    - "Pointwise CATE with continuous X is nonregular."
+
+policy_value:
+  observed_data: "O = (Y, A, X)"
+  target: "psi_d = E[Y(d)] for fixed policy d(X)"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity for policy d"
+  nuisances:
+    m_d: "E[Y|A=d(X),X]"
+    g_d: "P(A=d(X)|X)"
+  eif: "I(A=d(X))/g_d(X) * (Y-m_d(X)) + m_d(X) - psi_d"
+  estimator: "AIPW policy value estimator"
+  warnings:
+    - "Policy d must be fixed for this EIF."
+    - "Learned or optimal policies require extra care."
+
+causal_cdf:
+  observed_data: "O = (Y, A, X)"
+  target: "F_a(t) = P(Y(a) <= t)"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity"
+  nuisances:
+    m_at: "P(Y <= t | A=a,X)"
+    g_a: "P(A=a|X)"
+  eif: "I(A=a)/g_a(X)*(I(Y<=t)-m_at(X)) + m_at(X)-F_a(t)"
+  estimator: "AIPW distribution estimator"
+  warnings:
+    - "For fixed t."
+
+qte:
+  observed_data: "O = (Y, A, X)"
+  target: "q_1_tau - q_0_tau"
+  assumptions:
+    - "consistency"
+    - "exchangeability"
+    - "positivity"
+    - "positive counterfactual densities at quantiles"
+  nuisances:
+    F_a: "counterfactual CDF"
+    f_a: "counterfactual density at quantile"
+    m_at: "P(Y <= t | A=a,X)"
+    g_a: "P(A=a|X)"
+  eif: "-D_F1(q1)/f1(q1) + D_F0(q0)/f0(q0)"
+  estimator: "counterfactual quantile estimator"
+  warnings:
+    - "Check density positivity."
+    - "Sign errors are common."
+
+wald_late:
+  observed_data: "O = (Y, A, Z, X)"
+  target: "psi = nu_Y / nu_A"
+  assumptions:
+    - "IV assumptions needed for LATE interpretation"
+    - "instrument positivity"
+    - "nu_A bounded away from 0"
+  nuisances:
+    q: "P(Z=1|X)"
+    mY1: "E[Y|Z=1,X]"
+    mY0: "E[Y|Z=0,X]"
+    mA1: "E[A|Z=1,X]"
+    mA0: "E[A|Z=0,X]"
+  eif: "(D_nuY - psi*D_nuA) / nu_A"
+  estimator: "AIPW Wald ratio"
+  warnings:
+    - "Weak denominator creates instability."
+    - "EIF is for the Wald functional; causal interpretation requires IV assumptions."
+
+longitudinal_regime_value:
+  observed_data: "O = (L0,A0,L1,A1,...,LK,AK,Y)"
+  target: "psi_d = E[Y^d] for fixed regime d"
+  assumptions:
+    - "sequential exchangeability"
+    - "sequential positivity"
+    - "consistency"
+  nuisances:
+    g_t: "P(A_t=d_t(H_t)|H_t)"
+    Q_t: "sequential outcome regressions"
+  eif: "sum_t W_t^d*(Q_{t+1}-Q_t) + Q_0 - psi_d"
+  estimator: "longitudinal AIPW / TMLE-style estimator"
+  warnings:
+    - "Histories and cumulative weights must be defined carefully."
+    - "Use cross-fitting for nuisance functions."
+
+stochastic_intervention_continuous_treatment:
+  observed_data: "O = (Y, A, X)"
+  target: "psi = E_X integral m(a,X) gstar(a|X) da"
+  assumptions:
+    - "conditional exchangeability"
+    - "density positivity g(a|X)>0 where gstar(a|X)>0"
+  nuisances:
+    m: "E[Y|A=a,X]"
+    g: "observed exposure density p(A=a|X)"
+    gstar: "known intervention density"
+  eif: "gstar(A|X)/g(A|X)*(Y-m(A,X)) + integral m(a,X)gstar(a|X)da - psi"
+  estimator: "stochastic intervention estimator"
+  warnings:
+    - "Continuous density estimation can be difficult."
+    - "Modified treatment policies require separate derivation."
+
+nonregular_pointwise_cate:
+  observed_data: "O = (Y, A, X), X continuous"
+  target: "tau(x) = E[Y(1)-Y(0)|X=x]"
+  status: "nonregular in fully nonparametric model"
+  recommendation: "Use subgroup, smoothed, or parametric target."
+  warnings:
+    - "Do not use subgroup EIF with G=I(X=x)."
+
+nonregular_density_point:
+  observed_data: "O = Y"
+  target: "p_Y(y0)"
+  status: "nonregular in fully nonparametric model"
+  recommendation: "Use smoothed density target E[K_h(Y-y0)] with fixed h."
+  warnings:
+    - "Do not write I(Y=y0)-p(y0) for continuous Y."

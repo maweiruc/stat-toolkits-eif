@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, bm}
+
+\begin{document}
+
+\section*{Problem 002: Partially Linear Single Index Model}
+
+Let the observed data be i.i.d. copies of
+\[
+O=(Y,X,Z),
+\]
+where \(Y\in\mathbb R\), \(X\in\mathbb R^p\), and \(Z\in\mathbb R^q\).
+
+Consider the partially linear single index model
+\[
+Y = X^\top \beta + g(Z^\top \alpha) + \varepsilon,
+\qquad
+E(\varepsilon\mid X,Z)=0,
+\]
+where \(\beta\in\mathbb R^p\), \(\alpha\in\mathbb R^q\), and
+\(g:\mathbb R\to\mathbb R\) is an unknown smooth nuisance function.
+
+Let
+\[
+\theta=(\beta^\top,\alpha^\top)^\top.
+\]
+
+\subsection*{Identifiability}
+
+Because \(g(Z^\top\alpha)\) is invariant to scale changes in \(\alpha\), impose
+the normalization
+\[
+\|\alpha\|_2=1,
+\qquad
+\alpha_1>0.
+\]
+
+Equivalently, one may use a local unconstrained parameterization
+\[
+\alpha=\alpha(\gamma),
+\qquad
+\gamma\in\mathbb R^{q-1},
+\]
+and define the finite-dimensional parameter as
+\[
+\vartheta=(\beta^\top,\gamma^\top)^\top.
+\]
+
+In the derivation, please state clearly whether the influence function is for
+\(\theta=(\beta^\top,\alpha^\top)^\top\) under the constraint, or for the
+unconstrained local parameter \(\vartheta=(\beta^\top,\gamma^\top)^\top\).
+
+\subsection*{Density factorization}
+
+The joint density may be written as
+\[
+f_{X,Z,Y}(x,z,y)
+=
+f_{X,Z}(x,z)
+f_{\varepsilon\mid X,Z}
+\left\{
+y-x^\top\beta-g(z^\top\alpha),x,z
+\right\},
+\]
+with the conditional mean restriction
+\[
+E(\varepsilon\mid X,Z)=0.
+\]
+
+\subsection*{Question}
+
+Derive the influence function or efficient influence function for the
+finite-dimensional parameter of interest in this semiparametric model.
+
+Please:
+
+\begin{enumerate}
+\item normalize the problem and state the target parameter precisely;
+\item state the nuisance functions and model restrictions;
+\item derive the relevant score or moment equations;
+\item characterize the nuisance tangent space;
+\item derive a candidate influence function for \(\beta\) and \(\alpha\), or
+      for \(\beta\) and the local parameter \(\gamma\);
+\item state the projection needed for semiparametric efficiency;
+\item clearly mark any unresolved steps if a full EIF derivation requires
+      additional smoothness, completeness, or invertibility assumptions.
+\end{enumerate}
+
+\end{document}
+
