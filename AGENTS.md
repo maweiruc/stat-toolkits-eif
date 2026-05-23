@@ -63,6 +63,10 @@ If `notes.md` already exists, read it and treat it as user/context guidance. Do 
 
 If no exact formula is available, switch to research mode. Build the derivation from first principles using `agent/eif_research_problem_protocol.md`.
 
+Research mode is a maximum-effort mode, not permission to stop at the first plausible intermediate result. After finding a candidate IF/EIF, keep working through the verification and projection steps whenever a next mathematical step is identifiable.
+
+Do not stop at `candidate IF/EIF`, `projection unresolved`, or `full-model IF only` until you have tried the relevant escalation steps: verify all score components, formulate the projection or normal equations, try to solve them, check special cases, and consider operator or implicit-function forms. If the derivation still cannot be completed, include a short obstruction ledger describing what was tried and exactly where the argument fails.
+
 In research mode, clearly label the result as one of:
 
 - derived and verified under stated assumptions

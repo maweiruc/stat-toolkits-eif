@@ -20,11 +20,15 @@ Initial documentation-first release of the EIF derivation toolkit.
 - Implementation guide
 - Danger-zone guide
 - Formula registry
+- Formula registry schema and lightweight validation tooling
+- GitHub Actions CI for registry validation and unit tests
+- Contribution and local-reference hygiene guidance
 - Standard and hard benchmark tasks
 - Simulation test designs
 - Projection guide for restricted semiparametric models
 - Worked derivation for the restricted moment model
 - Worked derivation for the partially linear single index model
+- Maximum-effort research-mode rule before declaring candidate/projection-unresolved status
 
 ### Scope
 
@@ -32,9 +36,8 @@ This release is intended for deriving, auditing, and validating IF/EIF formulas,
 
 ### Not Included
 
-- Python/R package API
+- Statistical Python/R package API
 - Automated symbolic algebra
 - Automated LaTeX parsing beyond agent workflow
 - Full numerical simulation runner
 - Formal theorem-proving or proof assistant integration
-

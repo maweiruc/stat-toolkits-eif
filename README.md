@@ -1,8 +1,13 @@
-# EIF derivation toolkit
+# stat-toolkits-eif
 
 Current version: **v1.0.0**. See `VERSION.md` and `CHANGELOG.md`.
 
-This repository is a documentation-first toolkit for deriving, validating, and implementing influence functions and efficient influence functions (EIFs) in semiparametric problems.
+A documentation-first toolkit for deriving, checking, and validating influence
+functions and efficient influence functions (EIFs) in semiparametric
+statistics.
+
+This repository is part of the `stat-toolkits-*` series. The Python import
+package is `eif_toolkit`, and the validation CLI is `eif-validate`.
 
 The main goal is not formula lookup. The goal is a robust workflow:
 
@@ -44,6 +49,7 @@ For formula comparison:
 | --- | --- |
 | `VERSION.md` | Current release version and scope |
 | `CHANGELOG.md` | Release history |
+| `CONTRIBUTING.md` | Contribution, validation, and privacy guidance |
 | `MANUAL.md` | Human-facing usage manual, with prompt templates |
 | `TRIAL_GUIDE.md` | First-time trial guide and feedback checklist |
 | `AGENTS.md` | Agent-facing operating instructions |
@@ -64,6 +70,7 @@ For formula comparison:
 | `examples/eif_benchmark_tasks.md` | Standard benchmark tasks |
 | `examples/eif_hard_benchmark_tasks.md` | Hard/research-adjacent benchmark tasks |
 | `examples/eif_formula_registry.yaml` | Machine-readable formula registry |
+| `examples/eif_formula_registry_schema.md` | Registry field schema and style rules |
 | `simulations/eif_simulation_tests.md` | Simulation test designs |
 
 ---
@@ -92,10 +99,32 @@ For a research problem, add:
 ```text
 This may be a novel target. Please use research mode.
 Do not rely on formula lookup.
-Build the derivation from first principles and clearly mark unresolved steps.
+Build the derivation from first principles.
+Make a maximum-effort attempt to get the final IF/EIF.
+Only mark unresolved after trying the identifiable verification/projection/operator steps.
 ```
 
 More templates are in `MANUAL.md` and `examples/eif_workflow_examples.md`.
+
+## Problem Inbox
+
+Use `problems/latex_inbox/` for LaTeX or free-form EIF problems.
+
+- Put each new problem in its own `problem_XXX/` folder with `problem.tex`.
+- `notes.md` is optional; when missing, the agent should generate it before
+  derivation.
+- Local/private working folders can stay ignored by git when needed.
+
+## Engineering Checks
+
+The small Python package in this repository is only for registry validation.
+It is not a statistical EIF computation API.
+
+```bash
+python3 scripts/validate_formula_registry.py --strict
+python3 -m eif_toolkit.registry_validation --strict
+python3 -m unittest discover -s tests
+```
 
 ---
 
@@ -127,6 +156,8 @@ Hard mode requires identification, regularity, support, and tangent-space checks
 ### Research Mode
 
 Use when no exact formula is available. The output should be a derivation record, not just a formula.
+
+Research mode should push past the first candidate IF/EIF. If projection or verification is not complete, the answer should show the attempted score checks, projection or normal equations, and the precise mathematical obstruction.
 
 Research-mode answers should label their status:
 

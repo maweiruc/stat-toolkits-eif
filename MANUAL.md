@@ -23,7 +23,8 @@
 请读取 problems/latex_inbox/problem_XXX/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
-不要直接套公式；请标明 candidate、EIF、projection unresolved 或 nonregular。
+不要直接套公式；请尽最大努力给出最终 IF/EIF。
+只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 ```
 
 通常这四行就够了。详细规则已经写在 `AGENTS.md` 和 `agent/eif_research_problem_protocol.md` 里。
@@ -118,6 +119,8 @@ Hard mode 要求 component ledger。
 
 用于没有现成公式的问题。重点不是快速给最终答案，而是建立可审查的 derivation record。
 
+Research mode 要求 agent 尽最大努力解决问题。得到 candidate IF/EIF 之后，不能立刻停止；必须继续检查所有 score components，必要时写出 projection/normal equations，并尝试 closed form、离散/有限维版本、特殊情形、reparameterization 或 operator/implicit-function 解法。只有这些步骤仍然卡住时，才可以标记 unresolved。
+
 Research mode 输出必须标注状态：
 
 ```text
@@ -173,6 +176,8 @@ fully nonparametric model for O=(Y,A,X)
 ```text
 This may be a novel target. Please use research mode.
 Do not rely on formula lookup. Build the derivation from first principles.
+Make a maximum-effort attempt to get the final IF/EIF.
+Only mark projection/operator inverse/verification unresolved after trying the next mathematical steps.
 Clearly distinguish proved steps from candidate or unresolved steps.
 ```
 
@@ -234,6 +239,7 @@ Unresolved mathematical steps, if any
 - 没有 mean-zero check。
 - 没有说明 pathwise derivative identity。
 - 对 research problem 用“看起来像 ATE”之类的类比代替推导。
+- 对 research problem 停在 candidate IF 或 projection unresolved，但没有尝试可见的 verification/projection/operator 下一步。
 
 ---
 
@@ -277,6 +283,9 @@ After deriving the EIF, verify:
 This is a research target and may not appear in the literature.
 Please use the research derivation ledger:
 Step | Object | Result | Status | Notes
+After a candidate IF/EIF is found, keep going: verify all score components,
+formulate and try to solve any projection/normal equations, and only then mark
+unresolved with an obstruction ledger if the derivation still cannot be completed.
 Separate assumptions, proved steps, candidate steps, and unresolved steps.
 ```
 

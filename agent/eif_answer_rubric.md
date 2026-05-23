@@ -28,6 +28,7 @@ An answer should not be accepted as correct unless it satisfies all applicable i
 [ ] The expression reduces to known special cases.
 [ ] If a formula registry entry is used, applicability is checked rather than assumed.
 [ ] If the model is restricted, tangent-space projection is done or explicitly deferred.
+[ ] In research mode, unresolved status is given only after visible verification/projection/operator attempts, with an obstruction ledger.
 [ ] The estimator uses the correct pseudo-outcome.
 [ ] Standard error uses the empirical variance of estimated EIF values.
 [ ] Cross-fitting is recommended or used when nuisance functions are flexibly estimated.
@@ -51,6 +52,7 @@ These invalidate the answer.
 - Missing a likelihood component that affects the target.
 - Omitting a required denominator such as \(e(X)\), \(1-e(X)\), \(\pi(X)\), \(g(a\mid X)\), \(\beta\), or \(f(q_\tau)\).
 - Producing an expression that is not mean-zero.
+- In research mode, stopping at a candidate IF or unresolved projection while an obvious score verification, projection equation, or operator step remains unattempted.
 
 ### Major errors
 
@@ -103,6 +105,8 @@ obtained by projecting onto the restricted tangent space ...
 ```
 
 If the projection is not performed, say so explicitly.
+
+For research-mode answers, explicitly say what was attempted before stopping at an unresolved projection or candidate IF. If the next step is identifiable, such as writing projection equations or checking all score components, the answer is incomplete until that step is attempted.
 
 ### 3.3 Unidentified target
 
@@ -194,4 +198,3 @@ Checks:
 ```
 
 If any check is not available, the answer should say why.
-

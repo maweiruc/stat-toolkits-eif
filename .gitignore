@@ -1,0 +1,29 @@
+# Local app/tool settings.
+.claude/
+.DS_Store
+
+# Local environment and secrets.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.crt
+*.log
+
+# Python build/test artifacts.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Local/private problem workspaces.
+problems/latex_inbox/problem_004/
+
+# Optional local source/reference archives.
+references/*
+!references/README.md

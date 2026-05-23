@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stat-toolkits-eif"
+version = "1.0.0"
+description = "Documentation-first toolkit for deriving, checking, and validating efficient influence functions."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "PyYAML>=6",
+]
+
+[project.scripts]
+eif-validate = "eif_toolkit.registry_validation:main"
+
+[tool.setuptools]
+packages = ["eif_toolkit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

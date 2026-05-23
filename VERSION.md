@@ -13,6 +13,7 @@ This version focuses on:
 - answer validation rubrics
 - worked examples for restricted semiparametric projection problems
 - a problem inbox for user-supplied LaTeX files
+- lightweight formula-registry validation tooling and CI
 
-This is not yet a Python/R software package.
-
+This is not a statistical Python/R software package. The small Python module is
+only for validating the formula registry and running lightweight CI checks.
