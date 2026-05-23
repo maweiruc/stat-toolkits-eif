@@ -8,6 +8,13 @@ version = "1.0.0"
 description = "Documentation-first toolkit for deriving, checking, and validating efficient influence functions."
 readme = "README.md"
 requires-python = ">=3.9"
+authors = [
+  { name = "Wei Ma" },
+]
+license = { file = "LICENSE" }
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+]
 dependencies = [
   "PyYAML>=6",
 ]

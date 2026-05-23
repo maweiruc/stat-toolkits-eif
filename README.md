@@ -49,6 +49,7 @@ For formula comparison:
 | --- | --- |
 | `VERSION.md` | Current release version and scope |
 | `CHANGELOG.md` | Release history |
+| `LICENSE` | MIT license |
 | `CONTRIBUTING.md` | Contribution, validation, and privacy guidance |
 | `MANUAL.md` | Human-facing usage manual, with prompt templates |
 | `TRIAL_GUIDE.md` | First-time trial guide and feedback checklist |
@@ -234,3 +235,9 @@ eif_toolkit/
   problems/
     latex_inbox/
 ```
+
+---
+
+## License
+
+MIT License. Copyright (c) 2026 Wei Ma. See `LICENSE`.
