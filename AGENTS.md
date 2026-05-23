@@ -44,20 +44,13 @@ When the user gives a problem, especially in LaTeX:
 
 ## LaTeX inbox behavior
 
+For LaTeX inbox/problem-folder artifacts, follow `agent/eif_problem_artifacts.md`.
+
 When the user asks to process a LaTeX problem under `problems/latex_inbox/problem_*/problem.tex`, check whether `notes.md` exists in the same folder.
 
-If `notes.md` does not exist, create it automatically before derivation. The generated notes should include:
+If `notes.md` does not exist, create it automatically before derivation. If `notes.md` already exists, read it and treat it as user/context guidance. Do not overwrite existing notes unless the user asks.
 
-1. observed data
-2. target
-3. model / assumptions
-4. target triage route
-5. preferred mode: fast / hard / research
-6. nuisance functions
-7. possible danger zones
-8. planned derivation route
-
-If `notes.md` already exists, read it and treat it as user/context guidance. Do not overwrite existing notes unless the user asks.
+After deriving the IF/EIF for a LaTeX inbox problem, always create or update `solution.md` in the same folder. The chat response should be a concise summary that points to `solution.md`. Only create `solution.tex` or `solution.pdf` when the user explicitly asks.
 
 ## Research problems
 

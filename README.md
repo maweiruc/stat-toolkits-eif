@@ -56,6 +56,7 @@ For formula comparison:
 | `AGENTS.md` | Agent-facing operating instructions |
 | `agent/eif_agent_task_spec.md` | Standard EIF task workflow |
 | `agent/eif_latex_problem_protocol.md` | Parsing free-form or LaTeX problems |
+| `agent/eif_problem_artifacts.md` | Canonical problem-folder artifact conventions |
 | `agent/eif_target_triage.md` | Routing targets to the right derivation strategy |
 | `agent/eif_research_problem_protocol.md` | First-principles derivation for novel targets |
 | `agent/eif_hard_problem_protocol.md` | Hard-mode gates for unfamiliar or delicate problems |
@@ -115,6 +116,9 @@ Use `problems/latex_inbox/` for LaTeX or free-form EIF problems.
 - Put each new problem in its own `problem_XXX/` folder with `problem.tex`.
 - `notes.md` is optional; when missing, the agent should generate it before
   derivation.
+- `solution.md` is the default durable output after derivation; optional
+  `solution.tex` and `solution.pdf` are generated only when requested.
+- Artifact details are defined in `agent/eif_problem_artifacts.md`.
 - Local/private working folders can stay ignored by git when needed.
 
 ## Engineering Checks

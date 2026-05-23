@@ -304,3 +304,10 @@ Multiple materially different interpretations remain.
 
 The handoff must include the normalized target, model, assumptions, and regularity status.
 
+---
+
+## 11. Inbox output artifacts
+
+For problems under `problems/latex_inbox/problem_*/`, follow the canonical artifact rules in `agent/eif_problem_artifacts.md`.
+
+In brief, `notes.md` is the intake/problem brief and `solution.md` is the durable derivation result. After derivation, always create or update `solution.md` in the same folder. The chat response should summarize the conclusion and point to `solution.md`. Do not overwrite an existing `notes.md` unless the user asks.

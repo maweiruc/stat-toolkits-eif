@@ -30,6 +30,8 @@ Initial documentation-first release of the EIF derivation toolkit.
 - Worked derivation for the partially linear single index model
 - Maximum-effort research-mode rule before declaring candidate/projection-unresolved status
 - Explicit distinction between candidate IF, valid IF, and EIF in research-mode docs
+- Standard `solution.md` artifact convention for LaTeX inbox derivations
+- Canonical problem artifact specification in `agent/eif_problem_artifacts.md`
 
 ### Scope
 

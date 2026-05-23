@@ -701,6 +701,8 @@ The agent should output in this order:
 ## 18. Warnings and limitations
 ```
 
+For `problems/latex_inbox/problem_*/` tasks, write this detailed output to `solution.md` in the problem folder and follow `agent/eif_problem_artifacts.md` for artifact rules.
+
 ---
 
 ## 7. Minimal prompt for a coding agent

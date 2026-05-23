@@ -23,6 +23,7 @@
 请读取 problems/latex_inbox/problem_XXX/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
+请将详细推导保存到同目录 solution.md。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
@@ -188,9 +189,10 @@ Clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonr
 ```text
 If notes.md does not exist, the agent first generates notes.md as a problem digest,
 then uses it for the IF/EIF derivation.
+After derivation, the agent writes the detailed result to solution.md.
 ```
 
-自动生成的 `notes.md` 会包括 observed data、target、assumptions、triage route、preferred mode、nuisance functions、danger zones 和 planned derivation route。
+`notes.md`、`solution.md`、`solution.tex`、`solution.pdf` 的内容格式和生成规则统一定义在 `agent/eif_problem_artifacts.md`。简单说，`notes.md` 是 intake brief，`solution.md` 是运行后的主要产物；聊天回复可以只给摘要并指向 `solution.md`。如果你需要 LaTeX 或 PDF，可以另外要求 agent 生成 `solution.tex` 或编译 `solution.pdf`。
 
 ---
 
@@ -216,6 +218,8 @@ then uses it for the IF/EIF derivation.
 15. Special-case checks
 16. Warnings and unresolved steps
 ```
+
+如果是 `problems/latex_inbox/problem_XXX/` 里的问题，这些内容应该写入同目录的 `solution.md`。文件产物细节遵循 `agent/eif_problem_artifacts.md`。
 
 对于 research problem，还应该有：
 

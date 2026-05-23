@@ -8,6 +8,7 @@ The shortest version:
 请读取 problems/latex_inbox/problem_XXX/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
+请将详细推导保存到同目录 solution.md。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
@@ -43,6 +44,7 @@ Prompt:
 请读取 problems/latex_inbox/problem_001/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
+请将详细推导保存到同目录 solution.md。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
@@ -64,6 +66,7 @@ Prompt:
 请读取 problems/latex_inbox/problem_002/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
+请将详细推导保存到同目录 solution.md。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
@@ -85,6 +88,7 @@ Prompt:
 请读取 problems/latex_inbox/problem_003/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
+请将详细推导保存到同目录 solution.md。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
 请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
@@ -106,6 +110,8 @@ A good answer should include:
 8. candidate IF / valid IF / efficient score / EIF
 9. projection or orthogonality argument
 10. final status
+
+For inbox problems, the detailed answer should be saved in `solution.md`; the chat reply can be a short summary. Artifact details are defined in `agent/eif_problem_artifacts.md`.
 
 The final status should be one of:
 
@@ -144,6 +150,8 @@ When reporting trial feedback, use:
 Problem tested:
 
 Was notes.md generated or read correctly?
+
+Was solution.md created or updated with a detailed derivation?
 
 Was the target normalized correctly?
 
