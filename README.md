@@ -6,8 +6,8 @@ A documentation-first toolkit for deriving, checking, and validating influence
 functions and efficient influence functions (EIFs) in semiparametric
 statistics.
 
-This repository is part of the `stat-toolkits-*` series. The Python import
-package is `eif_toolkit`, and the validation CLI is `eif-validate`.
+This repository is part of the `stat-toolkits-*` series: documentation-first
+toolkits for statistical research workflows.
 
 The main goal is not formula lookup. The goal is a robust workflow:
 
@@ -123,8 +123,8 @@ Use `problems/latex_inbox/` for LaTeX or free-form EIF problems.
 
 ## Engineering Checks
 
-The small Python package in this repository is only for registry validation.
-It is not a statistical EIF computation API.
+A small Python validator is included for checking the formula registry
+(`eif-validate`). It is not an EIF computation API.
 
 ```bash
 python3 scripts/validate_formula_registry.py --strict
