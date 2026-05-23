@@ -8,7 +8,9 @@ The shortest version:
 请读取 problems/latex_inbox/problem_XXX/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
-不要直接套公式；请标明 candidate、EIF、projection unresolved 或 nonregular。
+不要直接套公式；请尽最大努力给出最终 IF/EIF。
+只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
+请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
 ```
 
 Replace `problem_XXX` with the folder you want to test.
@@ -41,7 +43,9 @@ Prompt:
 请读取 problems/latex_inbox/problem_001/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
-不要直接套公式；请标明 candidate、EIF、projection unresolved 或 nonregular。
+不要直接套公式；请尽最大努力给出最终 IF/EIF。
+只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
+请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
 ```
 
 ### Trial B: Partially linear single index model
@@ -60,7 +64,9 @@ Prompt:
 请读取 problems/latex_inbox/problem_002/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
-不要直接套公式；请标明 candidate、EIF、projection unresolved 或 nonregular。
+不要直接套公式；请尽最大努力给出最终 IF/EIF。
+只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
+请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
 ```
 
 ### Trial C: Your own LaTeX problem
@@ -79,7 +85,9 @@ Prompt:
 请读取 problems/latex_inbox/problem_003/problem.tex，
 使用 EIF toolkit 的 research mode 推导 IF/EIF。
 如果 notes.md 不存在，请先自动生成。
-不要直接套公式；请标明 candidate、EIF、projection unresolved 或 nonregular。
+不要直接套公式；请尽最大努力给出最终 IF/EIF。
+只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
+请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
 ```
 
 ---
@@ -95,7 +103,7 @@ A good answer should include:
 5. nuisance functions
 6. likelihood factorization
 7. tangent space or score decomposition
-8. candidate IF / efficient score / EIF
+8. candidate IF / valid IF / efficient score / EIF
 9. projection or orthogonality argument
 10. final status
 
@@ -103,7 +111,8 @@ The final status should be one of:
 
 ```text
 derived and verified under stated assumptions
-candidate IF/EIF with unresolved verification
+candidate IF with unresolved verification
+valid IF but efficiency/projection not completed
 full-model IF only; projection unresolved
 identified but pathwise differentiability unclear
 unidentified
@@ -123,6 +132,7 @@ Do not accept an answer if it:
 - ignores nuisance tangent spaces
 - gives an EIF for a nonregular target without explaining the regularization
 - omits mean-zero or orthogonality checks
+- stops at candidate IF or projection unresolved without attempting the visible verification/projection/operator next step
 
 ---
 
@@ -139,7 +149,7 @@ Was the target normalized correctly?
 
 Was the mode correct: fast / hard / research?
 
-Did the derivation distinguish candidate IF, efficient score, and EIF?
+Did the derivation distinguish candidate IF, valid IF, efficient score, and EIF?
 
 Were tangent spaces or projections handled correctly?
 
@@ -147,4 +157,3 @@ What was confusing?
 
 What should be improved?
 ```
-

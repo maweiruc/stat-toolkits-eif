@@ -69,8 +69,9 @@ If this is not a known formula, use research mode via agent/eif_research_problem
 
 Do not jump directly to a formula.
 In research mode, make a maximum-effort attempt to get the final IF/EIF:
-after a candidate IF/EIF, verify all score components, formulate and try to solve
+after a candidate IF or representer, verify all score components, formulate and try to solve
 any projection/normal equations, and only mark unresolved after a precise
 identification, regularity, projection, or operator-inverse obstruction.
-Return the normalized problem, derivation route, IF/EIF, verification, and any obstruction ledger.
+Clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonregular conclusions.
+Return the normalized problem, derivation route, IF/EIF status, verification, and any obstruction ledger.
 ```

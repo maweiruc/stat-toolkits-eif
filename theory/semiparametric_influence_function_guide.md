@@ -1090,7 +1090,7 @@ Output format:
 - Score decomposition
 - Component ledger for hard problems
 - Pathwise derivative derivation
-- IF / EIF / projection or nonregularity conclusion
+- Candidate IF / valid IF / EIF / projection or nonregularity conclusion
 - Mean-zero verification
 - Implementation, if requested
 - Numerical checks

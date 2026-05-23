@@ -102,6 +102,7 @@ Do not rely on formula lookup.
 Build the derivation from first principles.
 Make a maximum-effort attempt to get the final IF/EIF.
 Only mark unresolved after trying the identifiable verification/projection/operator steps.
+Clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonregular conclusions.
 ```
 
 More templates are in `MANUAL.md` and `examples/eif_workflow_examples.md`.
@@ -157,13 +158,13 @@ Hard mode requires identification, regularity, support, and tangent-space checks
 
 Use when no exact formula is available. The output should be a derivation record, not just a formula.
 
-Research mode should push past the first candidate IF/EIF. If projection or verification is not complete, the answer should show the attempted score checks, projection or normal equations, and the precise mathematical obstruction.
+Research mode should push past the first candidate IF or representer. If projection or verification is not complete, the answer should show the attempted score checks, projection or normal equations, and the precise mathematical obstruction.
 
 Research-mode answers should label their status:
 
 ```text
-derived and verified / candidate IF / projection unresolved /
-differentiability unclear / unidentified / nonregular
+derived and verified / candidate IF / valid IF but not efficient /
+projection unresolved / differentiability unclear / unidentified / nonregular
 ```
 
 ---
@@ -182,7 +183,7 @@ Do not accept an EIF answer unless it states:
 - likelihood factorization
 - score decomposition
 - pathwise derivative argument
-- final IF/EIF or reason no standard EIF exists
+- final candidate IF / valid IF / EIF, or reason no standard EIF exists
 - mean-zero verification
 - pathwise derivative identity check
 - positivity/support warnings

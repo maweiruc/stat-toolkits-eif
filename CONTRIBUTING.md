@@ -44,7 +44,7 @@ Identification assumptions:
 Observed-data functional:
 Likelihood factorization:
 Score decomposition:
-IF/EIF:
+Candidate IF / valid IF / EIF:
 Mean-zero check:
 Pathwise derivative check:
 Special-case checks:
@@ -52,7 +52,8 @@ Warnings or unresolved steps:
 ```
 
 For research-mode problems, follow `agent/eif_research_problem_protocol.md`.
-Unresolved status should include the maximum-effort obstruction ledger.
+Distinguish candidate IF, valid IF, and EIF. Unresolved status should include
+the maximum-effort obstruction ledger.
 
 ## Sources and References
 

@@ -392,7 +392,8 @@ Target triage route:
 ...
 
 Research status if no known formula applies:
-...
+derived and verified / candidate IF / valid IF but not EIF /
+projection unresolved / differentiability unclear / unidentified / nonregular
 ```
 
 Then check:
@@ -685,7 +686,7 @@ The agent should output in this order:
 
 ## 11. Pathwise derivative
 
-## 12. IF / EIF / projection or nonregularity conclusion
+## 12. Candidate IF / valid IF / EIF / projection or nonregularity conclusion
 
 ## 13. Research status and unresolved steps, if applicable
 

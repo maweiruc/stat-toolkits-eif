@@ -29,6 +29,7 @@ Initial documentation-first release of the EIF derivation toolkit.
 - Worked derivation for the restricted moment model
 - Worked derivation for the partially linear single index model
 - Maximum-effort research-mode rule before declaring candidate/projection-unresolved status
+- Explicit distinction between candidate IF, valid IF, and EIF in research-mode docs
 
 ### Scope
 

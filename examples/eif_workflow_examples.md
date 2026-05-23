@@ -243,8 +243,8 @@ E[w(e(X))]
 where \(w(u)=u(1-u)\).
 
 Assume consistency, exchangeability, and positivity.
-Derive a candidate IF/EIF under the nonparametric observed-data model.
-Clearly separate proved steps from candidate or unresolved steps.
+Make a maximum-effort attempt to derive the final IF/EIF under the nonparametric observed-data model.
+Clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonregular conclusions.
 ```
 
 ### Expected route
@@ -262,7 +262,7 @@ Research output should include:
 - derivative of numerator
 - derivative of denominator
 - treatment-mechanism score contribution
-- candidate representer
+- candidate representer, then valid IF/EIF status if verification succeeds
 - mean-zero and score identity checks
 - unresolved steps if the projection/verification is incomplete
 ```
@@ -323,7 +323,6 @@ Please do not jump to a formula. First:
 3. state what assumptions are needed for identification
 4. state whether the target seems pathwise differentiable
 5. propose a derivation route
-6. then derive a candidate IF/EIF if possible
-7. clearly mark unresolved steps
+6. then make a maximum-effort attempt to derive the final IF/EIF
+7. clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonregular conclusions
 ```
-

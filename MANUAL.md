@@ -25,9 +25,10 @@
 如果 notes.md 不存在，请先自动生成。
 不要直接套公式；请尽最大努力给出最终 IF/EIF。
 只有在识别、regularity、projection/operator inverse 真正卡住时才标 unresolved。
+请明确区分 candidate IF、valid IF、EIF、projection unresolved 或 nonregular。
 ```
 
-通常这四行就够了。详细规则已经写在 `AGENTS.md` 和 `agent/eif_research_problem_protocol.md` 里。
+通常这几行就够了。详细规则已经写在 `AGENTS.md` 和 `agent/eif_research_problem_protocol.md` 里。
 
 在一个新的 agent/chat 里，直接贴下面这段：
 
@@ -119,14 +120,15 @@ Hard mode 要求 component ledger。
 
 用于没有现成公式的问题。重点不是快速给最终答案，而是建立可审查的 derivation record。
 
-Research mode 要求 agent 尽最大努力解决问题。得到 candidate IF/EIF 之后，不能立刻停止；必须继续检查所有 score components，必要时写出 projection/normal equations，并尝试 closed form、离散/有限维版本、特殊情形、reparameterization 或 operator/implicit-function 解法。只有这些步骤仍然卡住时，才可以标记 unresolved。
+Research mode 要求 agent 尽最大努力解决问题。得到 candidate IF 或 representer 之后，不能立刻停止；必须继续检查所有 score components，必要时写出 projection/normal equations，并尝试 closed form、离散/有限维版本、特殊情形、reparameterization 或 operator/implicit-function 解法。只有这些步骤仍然卡住时，才可以标记 unresolved。
 
 Research mode 输出必须标注状态：
 
 ```text
 Status:
 - derived and verified under stated assumptions
-- candidate IF/EIF with unresolved verification
+- candidate IF with unresolved verification
+- valid IF but efficiency/projection not completed
 - full-model IF only; projection unresolved
 - identified but pathwise differentiability unclear
 - unidentified
@@ -178,7 +180,7 @@ This may be a novel target. Please use research mode.
 Do not rely on formula lookup. Build the derivation from first principles.
 Make a maximum-effort attempt to get the final IF/EIF.
 Only mark projection/operator inverse/verification unresolved after trying the next mathematical steps.
-Clearly distinguish proved steps from candidate or unresolved steps.
+Clearly distinguish candidate IF, valid IF, EIF, projection unresolved, and nonregular conclusions.
 ```
 
 如果你的问题来自 `problems/latex_inbox/problem_XXX/problem.tex`，你不需要自己写 `notes.md`。默认约定是：
@@ -208,7 +210,7 @@ then uses it for the IF/EIF derivation.
 9. Score decomposition
 10. Component ledger for hard/research problems
 11. Pathwise derivative
-12. IF / EIF / projection or nonregularity conclusion
+12. candidate IF / valid IF / EIF / projection or nonregularity conclusion
 13. Mean-zero verification
 14. Pathwise derivative identity check
 15. Special-case checks
@@ -256,6 +258,7 @@ Use it only as a comparison after deriving the result.
 
 ```text
 If the expression is only a candidate IF, label it as candidate.
+If it is a valid IF but not yet efficient, label it as valid IF, not EIF.
 If projection is unresolved, say so explicitly.
 Do not call it an EIF unless efficiency has been verified under the stated model.
 ```
@@ -283,10 +286,10 @@ After deriving the EIF, verify:
 This is a research target and may not appear in the literature.
 Please use the research derivation ledger:
 Step | Object | Result | Status | Notes
-After a candidate IF/EIF is found, keep going: verify all score components,
+After a candidate IF or representer is found, keep going: verify all score components,
 formulate and try to solve any projection/normal equations, and only then mark
 unresolved with an obstruction ledger if the derivation still cannot be completed.
-Separate assumptions, proved steps, candidate steps, and unresolved steps.
+Separate assumptions, proved steps, candidate IF, valid IF, EIF, and unresolved steps.
 ```
 
 ---

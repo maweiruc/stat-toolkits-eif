@@ -24,7 +24,8 @@ The agent must make clear which status applies:
 ```text
 Status:
 - Derived and verified under stated assumptions
-- Candidate IF/EIF requiring one unresolved verification step
+- Candidate IF requiring one unresolved verification step
+- Valid IF but efficiency/projection not completed
 - Full-model IF only; restricted-model projection unresolved
 - Identified but pathwise differentiability unclear
 - Not identified under stated assumptions
@@ -326,7 +327,7 @@ For research problems, formula matching is weak evidence. Verification should in
 
 ## 7. Derivative-by-component ledger
 
-## 8. Candidate IF / EIF
+## 8. Candidate IF / Valid IF / EIF
 
 ## 9. Verification
 
@@ -349,6 +350,7 @@ Use:
 
 ```text
 candidate IF
+valid IF but not efficient
 full-model IF
 observed-data gradient
 efficient gradient under the stated model

@@ -28,6 +28,7 @@ An answer should not be accepted as correct unless it satisfies all applicable i
 [ ] The expression reduces to known special cases.
 [ ] If a formula registry entry is used, applicability is checked rather than assumed.
 [ ] If the model is restricted, tangent-space projection is done or explicitly deferred.
+[ ] Candidate IF, valid IF, and EIF are distinguished when they differ.
 [ ] In research mode, unresolved status is given only after visible verification/projection/operator attempts, with an obstruction ledger.
 [ ] The estimator uses the correct pseudo-outcome.
 [ ] Standard error uses the empirical variance of estimated EIF values.
@@ -53,6 +54,7 @@ These invalidate the answer.
 - Omitting a required denominator such as \(e(X)\), \(1-e(X)\), \(\pi(X)\), \(g(a\mid X)\), \(\beta\), or \(f(q_\tau)\).
 - Producing an expression that is not mean-zero.
 - In research mode, stopping at a candidate IF or unresolved projection while an obvious score verification, projection equation, or operator step remains unattempted.
+- Calling a valid but non-efficient IF an EIF.
 
 ### Major errors
 
@@ -98,6 +100,9 @@ The answer should distinguish:
 
 ```text
 Full nonparametric IF:
+...
+
+Valid IF but not EIF, if applicable:
 ...
 
 Restricted-model EIF:
